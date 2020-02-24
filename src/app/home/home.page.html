@@ -1,14 +1,74 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-toolbar *ngIf="!clientConnected || showSettings">
+  <ion-buttons slot="secondary">
+    <ion-button (click)="startSocketServer()">
+      Restart Server
+    </ion-button>
+    <ion-button (click)="stopSocketServer()">
+      Stop Server
+    </ion-button>
+    <ion-button (click)="displayMsgQueue()">
+      Messages
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content *ngIf="!clientConnected">
+  <section class="section">
+    <div class="header">
+      <div class="header__text">
+        <h1>POS Facing Display</h1>
+      </div>
+      <div class="header__text">
+        <h2>To get started, connect to this device in POS Merchant setting.</h2>
+      </div>
+      <div class="header__text">
+        <h3>IP Address : {{ localIPAddress }}</h3>
+      </div>
+      <!-- <ion-grid>
+        <ion-row *ngFor="let msg of msgArr">
+          <ion-col>
+            <span>{{ msg }}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+    </div>
+  </section>
 </ion-content>
+<ion-content *ngIf="clientConnected">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" style="min-height: 520px;">
+        <div class="clientDisplay">
+          Welcome to <br> {{ clientName }}
+        </div>
+      </ion-col>
+      <ion-col size="6" style="background: #ffffff;">
+        <ion-row class="cart-list-row">
+          <div #cartList scrollY="true" class="cart-div" [scrollTop]="cartList.scrollHeight">
+            <ion-list *ngIf="cart && cart.length > 0">
+              <ion-item lines="inset" class="cart-item" *ngFor="let item of cart">
+                <ion-label class="label-cart-item ion-text-wrap">{{ item.description }}</ion-label>
+                <ion-label class="label-cart-item-total ion-text-right ion-text-wrap" slot="end">
+                  {{ (item.subtotal) | currency:'MYR ':'symbol' }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-row>
+        <ion-row class="cart-bottom-row">
+          <div class="cart-total-row">
+            Total: <span slot="end">{{ total | currency:'MYR ':'symbol' }}</span>
+          </div>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer *ngIf="!clientConnected || showSettings">
+  <ion-text class="ion-text-center home-text" style="width: 100%; font-size: 10px;">
+    <p>{{ connectionStatus }}</p>
+  </ion-text>
+</ion-footer>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed" *ngIf="clientConnected">
+  <ion-fab-button (click)="toggleSettingsBar()">
+    <ion-icon name="settings"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

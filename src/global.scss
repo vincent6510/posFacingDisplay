@@ -24,3 +24,14 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.my-custom-alert .alert-wrapper {
+    min-width: 600px !important;
+}
+
+.my-custom-alert .alert-message {
+    font-size: 11px !important;
+    overflow-y:auto !important;
+    max-height:240px !important;
+}

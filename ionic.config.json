@@ -1,5 +1,7 @@
 {
   "name": "posFacingDisplay",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

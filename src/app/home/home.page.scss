@@ -1,1 +1,243 @@
 
+// Colors
+$c-blue: #1126be;
+$c-white: #fefefe;
+
+// Transparent Colors
+$t-blue: rgba(17, 38, 190, 0.8);
+
+// Gradients
+$g-blue: linear-gradient($t-blue, $t-blue);
+
+// Shadows
+$s-basic: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+
+// Imports
+@import url('https://fonts.googleapis.com/css?family=Nunito:300');
+
+
+// Resets
+* {
+  box-sizing: border-box;  
+  font-family: inherit;
+}
+
+
+body {
+  margin: 0;  
+  padding-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  color: $c-white;
+  background: $c-white;
+}
+
+
+// Global Layout
+.wrapper {
+  margin: 0 auto;
+  width: 350px;
+  box-shadow: $s-basic;
+}
+
+.section {
+  padding: 1rem;
+  padding-top: 50px;
+}
+
+// Header Styles
+.header {
+  position: relative;
+  text-align: center;
+  
+  &__text {
+    position: relative;
+    padding: 1.5rem 0 1.2rem ;
+    color: #ffffff;
+    
+    > h1 {
+      margin: 0;
+      font-size: 35px;
+    }
+    > h2 {
+      margin: 0;
+      font-size: 25px;
+    }
+    > h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+  }
+  &__image {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  > .trapezoid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: skewY(-10deg);
+    transform-origin: top left; 
+    box-shadow: $s-basic;
+    background: $t-blue;
+    background-position: top center;
+    background-attachment: fixed;
+  }
+}
+
+// Form, input and button styles
+form {
+  margin: 0 auto;
+  max-width: 17rem;
+  overflow: auto;
+  
+  > * + * {
+    margin-top: 1rem;
+  }
+  
+  > ion-input {
+    border: 0;
+    border-bottom: 1px solid $c-blue;
+    border-radius: 0;
+    width: 100%;
+    height: 2rem;
+    padding: 0 0 0.25rem 0;
+    font-size: 1rem;
+    color: $c-blue;
+    background: $c-white;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $c-blue;
+    }
+  }
+  
+  > button {
+    margin-top: 2rem;
+    border: 0;
+    border-radius: 200px;
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    color: $c-white;
+    background: $c-blue;
+
+    &:focus {
+      outline: none;
+    }  
+  }
+  
+  > p {
+    margin: 0.25rem 0 0;
+    text-align: center;
+    color: $c-blue; 
+  }
+}
+
+// Starting value for sign-up form
+.sign-up {
+  display: none;
+}
+
+// Switch btn: there are two only because I was in a hurry a didn't want to write all the javascript immediately. In a production environment, there would be one opposite btn class that switched between the two.
+.opposite-btn1,
+.opposite-btn2 {
+  cursor: pointer;
+}
+
+.app-version {
+  text-align: center;
+  font-size: 12px;
+  padding: 5px;
+}
+
+ion-content {
+    --background: url('/assets/images/background.jpeg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.cart-column {
+    border-left: 2px solid var(--ion-color-primary);
+}
+
+.cart-list-row {
+    height: 80%;
+}
+
+.cart-bottom-row {
+    height: 15%;
+    border-top: 2px solid var(--ion-color-primary);
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.cart-total-row {
+    width: 100%;
+    text-align: right;
+    vertical-align: middle;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+.cart-button-row {
+    clear: both;
+    width: 100%;
+}
+
+.cart-item {
+    font-size: 14px;
+    width: 100%;
+}
+
+.label-cart-item {
+    max-width: 400px;
+}
+
+.label-cart-item-total {
+    max-width: 80px;
+}
+
+.cart-button {
+    font-size: 0.8em;
+}
+
+div[scrollX=true],div[scrollY=true] {
+    position: relative;
+    overflow: hidden;
+}
+
+div[scrollX=true] {
+    overflow-x: scroll;
+}
+  
+div[scrollY=true] {
+    overflow-y: scroll;
+}
+
+div.item-div {
+    width: 100%;
+    max-height: 500px;
+}
+
+div.cart-div {
+    width: 100%;
+    max-height: 400px;
+}
+
+.clientDisplay {
+    margin-top: 100px;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 35px;
+    color: #ffffff;
+}
