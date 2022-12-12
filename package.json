@@ -30,7 +30,7 @@
     "cordova-plugin-networkinterface": "^2.0.0",
     "cordova-plugin-websocket-server": "file:../cordova-plugin-websocket-server-master",
     "core-js": "^2.5.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "ngx-socket-io": "^3.0.1",
     "rxjs": "~6.5.1",
     "socket.io": "^2.3.0",
